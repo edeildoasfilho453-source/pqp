@@ -1,330 +1,487 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Victoria Janice da Cunha Ribeiro | Ateliê de Bolos e Biscoitos Artesanais</title>
-    <meta name="description" content="Bolos e biscoitos artesanais personalizados. Encomende pelo WhatsApp.">
-    
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    
-    <style>
-        :root {
-            --rosa: #d4777c;
-            --rosa-claro: #f9e8e8;
-            --caramelo: #c4956a;
-            --chocolate: #5c3a2e;
-            --off-white: #fdf9f5;
-            --dourado: #c9a86a;
-            --texto: #4a3f3a;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comercial LS &mdash; Atacado e Distribui&ccedil;&atilde;o de Mercadorias e Alimentos</title>
+  <meta name="description" content="Comercial LS (Jefferson Lima de Souza) - Distribuidora e Atacado de Alimentos e Mercadorias em Geral. CNPJ: 61.161.922/0001-75. Atendimento a supermercados, mercearias e com&eacute;rcios.">
+  <meta name="keywords" content="atacado de alimentos, distribuidora de alimentos bahia, comercial ls atacado, jefferson lima de souza, produtos alimenticios joao dourado">
+  <link rel="canonical" href="https://barrosconsultor.click/">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Comercial LS &mdash; Atacado e Distribuidora de Alimentos">
+  <meta property="og:description" content="Fornecimento atacadista de alimentos e produtos em geral com entrega r&aacute;pida e condi&ccedil;&otilde;es especiais para comerciantes.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://barrosconsultor.click/">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0f2744',
+              blue: '#1a56db',
+              accent: '#059669',
+              light: '#f8fafc',
+              gold: '#d97706'
+            }
+          }
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            color: var(--texto);
-            background-color: var(--off-white);
-            line-height: 1.6;
-        }
-        
-        .barra-superior {
-            background-color: var(--chocolate);
-            color: white;
-            padding: 8px 0;
-            font-size: 0.9rem;
-            text-align: center;
-        }
-        
-        .barra-superior i {
-            color: var(--dourado);
-            margin-right: 5px;
-        }
-        
-        .navbar {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            padding: 15px 0;
-        }
-        
-        .navbar-brand {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--rosa);
-        }
-        
-        .navbar-brand span {
-            color: var(--chocolate);
-        }
-        
-        .nav-link {
-            color: var(--texto);
-            font-weight: 500;
-            margin: 0 10px;
-            transition: color 0.3s;
-        }
-        
-        .nav-link:hover {
-            color: var(--rosa);
-        }
-        
-        .btn-pedido {
-            background-color: var(--rosa);
-            color: white;
-            border-radius: 25px;
-            padding: 10px 25px;
-            font-weight: bold;
-            transition: all 0.3s;
-            text-decoration: none;
-        }
-        
-        .btn-pedido:hover {
-            background-color: var(--chocolate);
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        .hero {
-            background: linear-gradient(135deg, rgba(92,58,46,0.85), rgba(212,119,124,0.75)), 
-                        url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            padding: 120px 0;
-            text-align: center;
-            color: white;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-        }
-        
-        .btn-whatsapp {
-            background-color: #25d366;
-            color: white;
-            border-radius: 30px;
-            padding: 15px 35px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .btn-whatsapp:hover {
-            background-color: #128c7e;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(37,211,102,0.3);
-        }
-        
-        section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--chocolate);
-            margin-bottom: 15px;
-        }
-        
-        .section-title p {
-            font-size: 1.1rem;
-            color: #7f6f69;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .sobre { background-color: white; }
-        .sobre img {
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            width: 100%;
-        }
-        
-        .sobre-texto { padding: 20px; }
-        .sobre-texto h3 {
-            color: var(--rosa);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-        
-        .bolos { background-color: var(--rosa-claro); }
-        .card-bolo {
-            background-color: white;
-            border-radius: 15px;
-            padding: 30px 20px;
-            text-align: center;
-            transition: all 0.3s;
-            height: 100%;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-        .card-bolo:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-        }
-        .card-bolo i {
-            font-size: 3rem;
-            color: var(--rosa);
-            margin-bottom: 20px;
-        }
-        .card-bolo h4 {
-            color: var(--chocolate);
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-        }
-        
-        .footer {
-            background-color: var(--chocolate);
-            color: white;
-            padding: 40px 0 20px;
-        }
-        .footer a { color: var(--dourado); text-decoration: none; }
-        .footer a:hover { color: white; }
-        
-        .company-info {
-            font-size: 0.9rem;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            text-align: center;
-        }
-    </style>
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
-    <div class="barra-superior">
-        <div class="container">
-            <i class="bi bi-clock"></i> Atendimento: Seg a Sáb, 08h às 18h
-        </div>
+  <!-- TOPBAR INFORMATIVA -->
+  <div class="bg-brand-navy text-slate-200 text-xs py-2 px-4 border-b border-slate-700">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-4 flex-wrap justify-center sm:justify-start">
+        <span><i class="fa-solid fa-building mr-1 text-emerald-400"></i> CNPJ: 61.161.922/0001-75</span>
+        <span class="hidden md:inline">|</span>
+        <span><i class="fa-solid fa-location-dot mr-1 text-emerald-400"></i> Jo&atilde;o Dourado - BA</span>
+        <span class="hidden md:inline">|</span>
+        <span><i class="fa-solid fa-clock mr-1 text-emerald-400"></i> Seg &agrave; Sex: 08:00 &agrave;s 18:00</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="mailto:jee2025@gmail.com" class="hover:text-emerald-400 transition flex items-center gap-1"><i class="fa-solid fa-envelope"></i> jee2025@gmail.com</a>
+        <a href="tel:5574988234987" class="hover:text-emerald-400 transition flex items-center gap-1"><i class="fa-solid fa-phone"></i> (74) 98823-4987</a>
+      </div>
     </div>
+  </div>
 
-    <nav class="navbar navbar-expand-lg sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">Victoria<span>Janice</span></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav align-items-center">
-                    <li class="nav-link"><a href="#sobre" class="nav-link">Sobre</a></li>
-                    <li class="nav-link"><a href="#produtos" class="nav-link">Produtos</a></li>
-                    <li class="nav-link"><a href="#contato" class="nav-link">Contato</a></li>
-                    <li class="nav-item ms-lg-3">
-                        <a href="https://api.whatsapp.com/send?phone=5513982040704" class="btn-pedido" target="_blank">Faça seu Pedido</a>
-                    </li>
-                </ul>
-            </div>
+  <!-- HEADER -->
+  <header class="bg-white sticky top-0 z-40 shadow-sm border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- LOGO -->
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-12 h-12 bg-gradient-to-tr from-brand-navy to-brand-blue rounded-xl flex items-center justify-center text-white font-black text-2xl shadow-md">
+          LS
         </div>
-    </nav>
+        <div>
+          <span class="text-2xl font-black tracking-tight text-brand-navy block leading-none">COMERCIAL LS</span>
+          <span class="text-[11px] font-bold tracking-wider text-slate-500 uppercase">Atacado &amp; Distribui&ccedil;&atilde;o de Alimentos</span>
+        </div>
+      </a>
 
-    <header class="hero">
-        <div class="container">
-            <h1>Sabor que cria memórias</h1>
-            <p>Bolos e biscoitos artesanais feitos com amor e os melhores ingredientes para o seu momento especial.</p>
-            <a href="https://api.whatsapp.com/send?phone=5513982040704" class="btn-whatsapp" target="_blank">
-                <i class="bi bi-whatsapp"></i> Falar com Atendente
+      <!-- MENU -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+        <a href="#inicio" class="hover:text-brand-blue transition">In&iacute;cio</a>
+        <a href="#empresa" class="hover:text-brand-blue transition">Quem Somos</a>
+        <a href="#categorias" class="hover:text-brand-blue transition">Produtos</a>
+        <a href="#cotacao" class="hover:text-brand-blue transition">Cota&ccedil;&atilde;o B2B</a>
+        <a href="#contato" class="hover:text-brand-blue transition">Contato</a>
+      </nav>
+
+      <!-- CTA WHATSAPP -->
+      <div class="flex items-center gap-3">
+        <a href="https://api.whatsapp.com/send?phone=5574988234987&text=Ol%C3%A1%2C+gostaria+de+solicitar+a+tabela+de+pre%C3%A7os+do+atacado+Comercial+LS" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2.5 rounded-lg shadow-md transition flex items-center gap-2 text-sm">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>Tabela Atacado</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="inicio" class="relative bg-gradient-to-br from-slate-900 via-brand-navy to-slate-800 text-white py-20 lg:py-28 overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-bold uppercase tracking-wider">
+            <i class="fa-solid fa-truck-fast"></i> Distribui&ccedil;&atilde;o Direta para Supermercados e Mercearias
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+            Fornecimento Atacadista com Pre&ccedil;o Direto e <span class="text-emerald-400">Entrega Garantida</span>
+          </h1>
+          <p class="text-lg text-slate-300 leading-relaxed max-w-2xl">
+            A <strong>Comercial LS</strong> (Jefferson Lima de Souza) &eacute; refer&ecirc;ncia no com&eacute;rcio atacadista de mercadorias em geral e g&ecirc;neros aliment&iacute;cios. Abaste&ccedil;a o estoque do seu neg&oacute;cio com margens competitivas, faturamento para pessoa jur&iacute;dica e atendimento personalizado.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 pt-4">
+            <a href="https://api.whatsapp.com/send?phone=5574988234987&text=Ol%C3%A1%2C+gostaria+de+solicitar+um+or%C3%A7amento+para+meu+com%C3%A9rcio." target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-emerald-900/30 transition text-center flex items-center justify-center gap-3">
+              <i class="fa-brands fa-whatsapp text-xl"></i>
+              <span>Solicitar Cota&ccedil;&atilde;o no WhatsApp</span>
             </a>
-        </div>
-    </header>
+            <a href="#categorias" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold px-8 py-4 rounded-xl transition text-center flex items-center justify-center gap-2">
+              <i class="fa-solid fa-boxes-stacked"></i>
+              <span>Ver Cat&aacute;logo de Produtos</span>
+            </a>
+          </div>
 
-    <section id="sobre" class="sobre">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=800&q=80" alt="Nossa Cozinha" class="img-fluid">
-                </div>
-                <div class="col-lg-6 sobre-texto">
-                    <h3>Nossa História</h3>
-                    <p>A Victoria Janice da Cunha Ribeiro nasceu da paixão por transformar ingredientes simples em doces inesquecíveis. Somos especializados em fabricação de biscoitos e bolachas, oferecendo um sabor autêntico e artesanal.</p>
-                    <p>Trabalhamos com encomendas para eventos, presentes ou simplesmente para aquele café da tarde especial.</p>
-                </div>
+          <div class="grid grid-cols-3 gap-4 pt-8 border-t border-slate-700/60 text-center sm:text-left">
+            <div>
+              <span class="block text-2xl font-black text-white">R$ 500k</span>
+              <span class="text-xs text-slate-400">Capital Social Integralizado</span>
             </div>
+            <div>
+              <span class="block text-2xl font-black text-emerald-400">100%</span>
+              <span class="text-xs text-slate-400">Empresa Ativa e Regular</span>
+            </div>
+            <div>
+              <span class="block text-2xl font-black text-white">Atacado</span>
+              <span class="text-xs text-slate-400">Linha Completa de Alimentos</span>
+            </div>
+          </div>
         </div>
-    </section>
 
-    <section id="produtos" class="bolos">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nossos Produtos</h2>
-                <p>Conheça nossas especialidades feitas sob medida para você</p>
+        <!-- CARD REGISTRO -->
+        <div class="lg:col-span-5">
+          <div class="bg-white text-slate-800 rounded-3xl p-8 shadow-2xl border border-slate-100">
+            <div class="flex items-center gap-3 border-b border-slate-100 pb-4 mb-6">
+              <div class="w-10 h-10 rounded-lg bg-brand-navy/10 flex items-center justify-center text-brand-navy">
+                <i class="fa-solid fa-file-contract text-lg"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-lg text-brand-navy">Dados de Registro Comercial</h3>
+                <p class="text-xs text-slate-500">Cadastro Nacional da Pessoa Jur&iacute;dica</p>
+              </div>
             </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card-bolo">
-                        <i class="bi bi-cake"></i>
-                        <h4>Bolos Decorados</h4>
-                        <p>Bolos personalizados para aniversários, casamentos e comemorações especiais, com design exclusivo e sabor inigualável.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-bolo">
-                        <i class="bi bi-cookie"></i>
-                        <h4>Biscoitos e Bolachas</h4>
-                        <p>Fabricação própria de biscoitos finos e bolachas artesanais, perfeitos para presentear ou acompanhar um bom café.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-bolo">
-                        <i class="bi bi-gift"></i>
-                        <h4>Kits Presente</h4>
-                        <p>Surpreenda quem você ama com nossas lindas caixas de doces e biscoitos selecionados.</p>
-                    </div>
-                </div>
+
+            <dl class="space-y-3 text-sm">
+              <div class="flex justify-between py-1.5 border-b border-slate-50">
+                <dt class="text-slate-500">Raz&atilde;o Social:</dt>
+                <dd class="font-bold text-slate-800 text-right">Jefferson Lima de Souza</dd>
+              </div>
+              <div class="flex justify-between py-1.5 border-b border-slate-50">
+                <dt class="text-slate-500">Nome Fantasia:</dt>
+                <dd class="font-bold text-slate-800 text-right">Comercial LS</dd>
+              </div>
+              <div class="flex justify-between py-1.5 border-b border-slate-50">
+                <dt class="text-slate-500">CNPJ:</dt>
+                <dd class="font-mono font-bold text-emerald-700 text-right">61.161.922/0001-75</dd>
+              </div>
+              <div class="flex justify-between py-1.5 border-b border-slate-50">
+                <dt class="text-slate-500">CNAE Principal:</dt>
+                <dd class="font-medium text-slate-800 text-right text-xs max-w-[200px]">46.91-5-00 - Atacado de Alimentos</dd>
+              </div>
+              <div class="flex justify-between py-1.5 border-b border-slate-50">
+                <dt class="text-slate-500">Situa&ccedil;&atilde;o Cadastral:</dt>
+                <dd class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-emerald-100 text-emerald-800">ATIVA</dd>
+              </div>
+              <div class="flex justify-between py-1.5">
+                <dt class="text-slate-500">Munic&iacute;pio / UF:</dt>
+                <dd class="font-bold text-slate-800 text-right">Jo&atilde;o Dourado - Bahia</dd>
+              </div>
+            </dl>
+
+            <div class="mt-6 pt-4 border-t border-slate-100">
+              <a href="https://api.whatsapp.com/send?phone=5574988234987&text=Ol%C3%A1%2C+gostaria+de+cadastrar+minha+empresa+para+compras+no+atacado." target="_blank" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-xl text-center block transition text-sm">
+                Cadastrar Empresa para Compras B2B
+              </a>
             </div>
+          </div>
         </div>
-    </section>
 
-    <footer id="contato" class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h4 class="mb-3 text-white">Contato</h4>
-                    <p><i class="bi bi-telephone"></i> (13) 98204-0704</p>
-                    <p><i class="bi bi-whatsapp"></i> <a href="https://api.whatsapp.com/send?phone=5513982040704" target="_blank">(13) 98204-0704</a></p>
-                    <p><i class="bi bi-envelope"></i> <a href="mailto:abertura@maismei.com.br">abertura@maismei.com.br</a></p>
-                </div>
-                <div class="col-lg-8">
-                    <h4 class="mb-3 text-white">Dados da Empresa</h4>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <p><strong>Razão Social:</strong> 68.409.188 Victoria Janice da Cunha Ribeiro</p>
-                            <p><strong>CNPJ:</strong> 68.409.188/0001-60</p>
-                            <p><strong>Inscrição Estadual (SP):</strong> 161.274.741.110</p>
-                        </div>
-                        <div class="col-md-6">
-                            <p><strong>Atividade Principal (CNAE):</strong><br> 10.92-9-00 - Fabricação de biscoitos e bolachas</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="company-info">
-                <p>&copy; 2026 Victoria Janice da Cunha Ribeiro - Todos os direitos reservados.</p>
-            </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIAS DE PRODUTOS -->
+  <section id="categorias" class="py-20 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-emerald-600 font-bold text-sm uppercase tracking-wider">Linha de Produtos</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy mt-2">Mix Completo para o Seu Com&eacute;rcio</h2>
+        <p class="text-slate-600 mt-4 leading-relaxed">Trabalhamos com as marcas mais consolidadas do mercado nacional, garantindo alto giro e rentabilidade para o seu estabelecimento.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- CARD 1 -->
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:shadow-lg transition group">
+          <div class="w-14 h-14 bg-blue-100 text-brand-blue rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-blue group-hover:text-white transition">
+            <i class="fa-solid fa-wheat-awn"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-800 mb-2">Gr&atilde;os e Cereais</h3>
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">Arroz tipo 1 e tipo 2, feij&atilde;o carioca e preto, milho, farin&aacute;ceos, floc&otilde;es e derivados de primeira linha.</p>
+          <span class="text-xs font-bold text-brand-blue">Fardos &amp; Sacarias Fechadas</span>
         </div>
-    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- CARD 2 -->
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:shadow-lg transition group">
+          <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-emerald-600 group-hover:text-white transition">
+            <i class="fa-solid fa-bottle-droplet"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-800 mb-2">Mercearia e &Oacute;leos</h3>
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">&Oacute;leos vegetais de soja e milho, a&ccedil;&uacute;car cristal e refinado, massas aliment&iacute;cias, biscoitos e molhos.</p>
+          <span class="text-xs font-bold text-emerald-600">Caixas Fechadas Master</span>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:shadow-lg transition group">
+          <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-amber-600 group-hover:text-white transition">
+            <i class="fa-solid fa-mug-hot"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-800 mb-2">Matinais e Bebidas</h3>
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">Caf&eacute;s torrados e mo&iacute;dos, leites integrais e desnatados, achocolatados, sucos prontos e refrigerantes.</p>
+          <span class="text-xs font-bold text-amber-600">Pacotes e Paletes</span>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 hover:shadow-lg transition group">
+          <div class="w-14 h-14 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:bg-purple-600 group-hover:text-white transition">
+            <i class="fa-solid fa-pump-soap"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-800 mb-2">Higiene e Limpeza</h3>
+          <p class="text-sm text-slate-600 leading-relaxed mb-4">Sab&atilde;o em p&oacute; e l&iacute;quido, desinfetantes, pap&eacute;is higi&ecirc;nicos institucionais, detergentes e esponjas.</p>
+          <span class="text-xs font-bold text-purple-600">Linha Comercial &amp; Dom&eacute;stica</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- QUEM SOMOS -->
+  <section id="empresa" class="py-20 bg-slate-100 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        
+        <div>
+          <span class="text-emerald-600 font-bold text-sm uppercase tracking-wider">Hist&oacute;ria &amp; Compromisso</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy mt-2 leading-tight">Solidez e Parceria para o Crescimento do Com&eacute;rcio Regional</h2>
+          <p class="mt-6 text-slate-600 leading-relaxed">
+            Fundada sob a raz&atilde;o social <strong>Jefferson Lima de Souza</strong> e nome fantasia <strong>Comercial LS</strong> (CNPJ 61.161.922/0001-75), nossa distribuidora nasceu com a miss&atilde;o de encurtar a dist&acirc;ncia entre as grandes ind&uacute;strias aliment&iacute;cias e o pequeno e m&eacute;dio varejista.
+          </p>
+          <p class="mt-4 text-slate-600 leading-relaxed">
+            Com sede estrat&eacute;gica em <strong>Jo&atilde;o Dourado - Bahia</strong> e capital social integralizado de <strong>R$ 500.000,00</strong>, estruturamos uma opera&ccedil;&atilde;o log&iacute;stica robusta e um canal de vendas direto e humanizado, oferecendo condi&ccedil;&otilde;es comerciais justas que impulsionam a margem de lucro de nossos clientes.
+          </p>
+
+          <div class="grid grid-cols-2 gap-6 mt-8">
+            <div class="border-l-4 border-brand-blue pl-4">
+              <h4 class="font-bold text-slate-800 text-base">Miss&atilde;o</h4>
+              <p class="text-xs text-slate-600 mt-1">Abastecer o com&eacute;rcio com mercadorias de qualidade superior e agilidade log&iacute;stica exemplar.</p>
+            </div>
+            <div class="border-l-4 border-emerald-500 pl-4">
+              <h4 class="font-bold text-slate-800 text-base">Valores</h4>
+              <p class="text-xs text-slate-600 mt-1">&Eacute;tica comercial, transpar&ecirc;ncia cadastral, pontualidade e respeito aos parceiros.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-8 shadow-xl border border-slate-200 space-y-6">
+          <h3 class="text-2xl font-bold text-brand-navy">Por que escolher a Comercial LS?</h3>
+          
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-1">
+              <i class="fa-solid fa-truck-ramp-box"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-slate-800">Estoque Pr&oacute;prio a Pronta Entrega</h4>
+              <p class="text-sm text-slate-600">Elimine a falta de produtos na sua loja. Nossos centros de distribui&ccedil;&atilde;o mant&ecirc;m alto volume dos itens mais procurados.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 text-brand-blue flex items-center justify-center shrink-0 mt-1">
+              <i class="fa-solid fa-hand-holding-dollar"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-slate-800">Faturamento B2B e Condi&ccedil;&otilde;es Especiais</h4>
+              <p class="text-sm text-slate-600">Facilidade de pagamento com emiss&atilde;o de nota fiscal eletr&ocirc;nica e op&ccedil;&otilde;es negociadas direto com seu consultor.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center shrink-0 mt-1">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-slate-800">Garantia e Proced&ecirc;ncia Fiscal</h4>
+              <p class="text-sm text-slate-600">100% dos produtos contam com laudos de qualidade dos fabricantes e total conformidade com as normas sanit&aacute;rias e tribut&aacute;rias.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMUL??RIO DE COTA????O -->
+  <section id="cotacao" class="py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-brand-navy to-slate-900 rounded-3xl p-8 sm:p-12 text-white shadow-2xl">
+        <div class="text-center max-w-xl mx-auto mb-10">
+          <span class="text-emerald-400 font-bold text-xs uppercase tracking-wider">Atendimento Comercial B2B</span>
+          <h2 class="text-3xl font-extrabold mt-2">Solicite uma Cota&ccedil;&atilde;o Personalizada</h2>
+          <p class="text-slate-300 text-sm mt-3">Preencha os dados da sua empresa abaixo e receba nossa tabela de pre&ccedil;os atualizada com descontos por volume.</p>
+        </div>
+
+        <form onsubmit="event.preventDefault(); window.open('https://api.whatsapp.com/send?phone=5574988234987&text=Ol%C3%A1%2C+solicitei+uma+cota%C3%A7%C3%A3o+pelo+site+Comercial+LS.+Empresa%3A+' + encodeURIComponent(document.getElementById('form_empresa').value) + '+%7C+CNPJ%3A+' + encodeURIComponent(document.getElementById('form_cnpj').value));" class="space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Nome do Respons&aacute;vel</label>
+              <input type="text" id="form_nome" required placeholder="Seu nome" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400 text-sm">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Nome da Empresa / Fantasia</label>
+              <input type="text" id="form_empresa" required placeholder="Ex: Supermercado Central" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400 text-sm">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase mb-1">CNPJ da Empresa</label>
+              <input type="text" id="form_cnpj" required placeholder="00.000.000/0001-00" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400 text-sm">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 uppercase mb-1">WhatsApp / Telefone</label>
+              <input type="tel" id="form_tel" required placeholder="(00) 00000-0000" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400 text-sm">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 uppercase mb-1">Produtos ou Categorias de Interesse</label>
+            <textarea rows="3" placeholder="Ex: Cota&ccedil;&atilde;o de fardos de arroz, a&ccedil;&uacute;car, caf&eacute; e &oacute;leo de soja..." class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-emerald-400 text-sm"></textarea>
+          </div>
+
+          <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-xl shadow-lg transition text-base flex items-center justify-center gap-2">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>Enviar Pedido de Cota&ccedil;&atilde;o</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="py-20 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-emerald-600 font-bold text-sm uppercase tracking-wider">Canais Oficiais de Atendimento</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy mt-2">Fale com a Comercial LS</h2>
+        <p class="text-slate-600 mt-3">Nossa equipe comercial est&aacute; pronta para atender sua solicita&ccedil;&atilde;o de compra ou esclarecer d&uacute;vidas.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+        
+        <!-- CARD ENDERECO -->
+        <div class="bg-white rounded-2xl p-8 border border-slate-200 text-center shadow-sm">
+          <div class="w-12 h-12 bg-blue-100 text-brand-blue rounded-xl flex items-center justify-center mx-auto text-xl mb-4">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <h3 class="font-bold text-lg text-slate-800 mb-2">Endere&ccedil;o da Sede</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Avenida Joaquim Augusto, 925<br>
+            Centro &mdash; Jo&atilde;o Dourado / BA<br>
+            CEP: 44920-000
+          </p>
+          <a href="https://www.google.com.br/maps/search/Avenida%20Joaquim%20Augusto%20925%20Centro%20Jo%C3%A3o%20Dourado%20BA" target="_blank" class="mt-4 inline-block text-xs font-bold text-brand-blue hover:underline">Ver no Google Maps &rarr;</a>
+        </div>
+
+        <!-- CARD TELEFONE -->
+        <div class="bg-white rounded-2xl p-8 border border-slate-200 text-center shadow-sm">
+          <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mx-auto text-xl mb-4">
+            <i class="fa-solid fa-phone"></i>
+          </div>
+          <h3 class="font-bold text-lg text-slate-800 mb-2">Telefones &amp; WhatsApp</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Atendimento Comercial: <br>
+            <strong class="text-slate-800 text-base">(74) 98823-4987</strong><br>
+            Segunda a Sexta das 08h &agrave;s 18h
+          </p>
+          <a href="https://api.whatsapp.com/send?phone=5574988234987" target="_blank" class="mt-4 inline-block text-xs font-bold text-emerald-600 hover:underline">Iniciar Conversa no WhatsApp &rarr;</a>
+        </div>
+
+        <!-- CARD EMAIL -->
+        <div class="bg-white rounded-2xl p-8 border border-slate-200 text-center shadow-sm">
+          <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center mx-auto text-xl mb-4">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <h3 class="font-bold text-lg text-slate-800 mb-2">Correio Eletr&ocirc;nico</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">
+            Envio de cota&ccedil;&otilde;es e notas fiscais: <br>
+            <strong class="text-slate-800 text-base">jee2025@gmail.com</strong><br>
+            Retorno em at&eacute; 24 horas &uacute;teis
+          </p>
+          <a href="mailto:jee2025@gmail.com" class="mt-4 inline-block text-xs font-bold text-amber-600 hover:underline">Enviar E-mail Agora &rarr;</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER COMPLETO -->
+  <footer class="bg-brand-navy text-slate-300 text-sm border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        
+        <!-- COLUNA 1 -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-brand-blue rounded-lg flex items-center justify-center text-white font-black text-xl">
+              LS
+            </div>
+            <span class="text-xl font-bold text-white tracking-tight">COMERCIAL LS</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Empresa especializada no com&eacute;rcio atacadista de mercadorias em geral, com foco em g&ecirc;neros aliment&iacute;cios e abastecimento de estabelecimentos comerciais.
+          </p>
+          <p class="text-xs text-slate-400">
+            <strong>Capital Social:</strong> R$ 500.000,00<br>
+            <strong>Porte:</strong> Micro Empresa / ME
+          </p>
+        </div>
+
+        <!-- COLUNA 2 -->
+        <div>
+          <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-b border-slate-700 pb-2">Navega&ccedil;&atilde;o R&aacute;pida</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#inicio" class="hover:text-emerald-400 transition">In&iacute;cio</a></li>
+            <li><a href="#empresa" class="hover:text-emerald-400 transition">Institucional / Sobre N&oacute;s</a></li>
+            <li><a href="#categorias" class="hover:text-emerald-400 transition">Cat&aacute;logo de Mercadorias</a></li>
+            <li><a href="#cotacao" class="hover:text-emerald-400 transition">Solicitar Cota&ccedil;&atilde;o</a></li>
+            <li><a href="#contato" class="hover:text-emerald-400 transition">Fale Conosco</a></li>
+          </ul>
+        </div>
+
+        <!-- COLUNA 3 -->
+        <div>
+          <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-b border-slate-700 pb-2">Pol&iacute;ticas e Legal</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="termos.html" class="hover:text-emerald-400 transition">Termos de Uso e Venda</a></li>
+            <li><a href="privacidade.html" class="hover:text-emerald-400 transition">Pol&iacute;tica de Privacidade (LGPD)</a></li>
+            <li><a href="contato.html" class="hover:text-emerald-400 transition">Central de Atendimento ao Cliente</a></li>
+          </ul>
+        </div>
+
+        <!-- COLUNA 4 -->
+        <div>
+          <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-b border-slate-700 pb-2">Informa&ccedil;&otilde;es Fiscais</h4>
+          <div class="text-xs space-y-1.5 text-slate-400">
+            <p><strong>Raz&atilde;o Social:</strong> Jefferson Lima de Souza</p>
+            <p><strong>Nome Fantasia:</strong> Comercial Ls</p>
+            <p><strong>CNPJ:</strong> 61.161.922/0001-75</p>
+            <p><strong>CNAE:</strong> 46.91-5-00 (Com&eacute;rcio Atacadista)</p>
+            <p><strong>Endere&ccedil;o:</strong> Av. Joaquim Augusto, 925, Centro</p>
+            <p><strong>Cidade:</strong> Jo&atilde;o Dourado - BA | CEP: 44920-000</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-slate-800 text-center text-xs text-slate-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p>&copy; 2026 Comercial LS (Jefferson Lima de Souza). Todos os direitos reservados. CNPJ: 61.161.922/0001-75.</p>
+        <p class="flex items-center gap-4">
+          <a href="termos.html" class="hover:text-slate-300">Termos</a>
+          <span>&middot;</span>
+          <a href="privacidade.html" class="hover:text-slate-300">Privacidade</a>
+          <span>&middot;</span>
+          <a href="contato.html" class="hover:text-slate-300">Contato</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- BOTAO WHATSAPP -->
+  <a href="https://api.whatsapp.com/send?phone=5574988234987&text=Ol%C3%A1%2C+gostaria+de+solicitar+um+or%C3%A7amento+no+atacado+Comercial+LS" target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition hover:scale-110" title="Fale conosco no WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
 </body>
 </html>
