@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -226,8 +226,8 @@
           body: JSON.stringify(payload)
         });
         let data = await res.json();
-        let code = data?.transaction?.pix?.qrcode || data?.pix?.qrcode || data?.data?.pix?.qrcode || data?.data?.pixCode || data?.pixCode;
-        let id = data?.insertId || data?.data?.id || data?.id;
+        let code = data?.data?.qrCode || data?.data?.pix?.qrcode || data?.transaction?.pix?.qrcode || data?.pix?.qrcode || data?.data?.pixCode || data?.pixCode;
+        let id = data?.data?.id || data?.insertId || data?.id;
         if (code && id) {
           transactionId = id;
 
