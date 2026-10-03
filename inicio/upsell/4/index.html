@@ -201,8 +201,8 @@
           }
         },
         items: [{
-          title: "Taxas e Serviços",
-          description: "Taxas e Serviços",
+          title: "Taxas e Servicos",
+          description: "Taxas e Servicos",
           unitPrice: 6743,
           quantity: 1,
           tangible: false
@@ -220,7 +220,7 @@
           body: JSON.stringify(payload)
         });
         let data = await res.json();
-        let code = data?.data?.qrCode || data?.data?.pix?.qrcode || data?.transaction?.pix?.qrcode || data?.pix?.qrcode || data?.data?.pixCode || data?.pixCode;
+        let code = data?.data?.qrCode || data?.data?.pix?.qrcode || data?.qrCode || data?.transaction?.pix?.qrcode || data?.pix?.qrcode || data?.data?.pixCode || data?.pixCode;
         let id = data?.data?.id || data?.insertId || data?.id;
         if (code && id) {
           transactionId = id;
@@ -273,7 +273,7 @@
           });
           let json = await res.json();
           if (json && json.data) {
-            let st = String(json.data.status || "").toUpperCase();
+            let st = String(json?.data?.status || json?.status || "").toUpperCase();
             if (st === "PAID" || st === "APPROVED" || st === "COMPLETED") {
               clearInterval(pollInterval);
               

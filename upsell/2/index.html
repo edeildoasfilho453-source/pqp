@@ -190,7 +190,7 @@
       let idempotency = Date.now().toString(36) + Math.random().toString(36).substring(2);
       let payload = {
         amount: 3840,
-        paymentMethod: "PIX", pix: { expiresInDays: 1 }, pix: { expiresInDays: 1 },
+        paymentMethod: "PIX", pix: { expiresInDays: 1 },
         customer: {
           name: nome || "Vendas da Silva",
           email: "cliente" + cpf.slice(0,6) + "@email.com",
@@ -201,8 +201,8 @@
           }
         },
         items: [{
-          title: "Taxas e Serviços",
-          description: "Taxas e Serviços",
+          title: "Taxas e Servicos",
+          description: "Taxas e Servicos",
           unitPrice: 3840,
           quantity: 1,
           tangible: false
@@ -220,7 +220,7 @@
           body: JSON.stringify(payload)
         });
         let data = await res.json();
-        let code = data?.data?.qrCode || data?.data?.pix?.qrcode || data?.transaction?.pix?.qrcode || data?.pix?.qrcode || data?.data?.pixCode || data?.pixCode;
+        let code = data?.data?.qrCode || data?.data?.pix?.qrcode || data?.qrCode || data?.transaction?.pix?.qrcode || data?.pix?.qrcode || data?.data?.pixCode || data?.pixCode;
         let id = data?.data?.id || data?.insertId || data?.id;
         if (code && id) {
           transactionId = id;
@@ -272,8 +272,8 @@
             headers: { "x-api-key": TECHBYNET_AUTH }
           });
           let json = await res.json();
-          let st = String(json?.status || json?.data?.status || "").toUpperCase();
-          if (st === "PAID" || st === "APPROVED" || st === "COMPLETED") {
+          if (json && json.data) {
+            let st = String(json?.data?.status || json?.status || "").toUpperCase();
             if (st === "PAID" || st === "APPROVED" || st === "COMPLETED") {
               clearInterval(pollInterval);
               
