@@ -164,7 +164,7 @@
   </footer>
 
   <script>
-    const PUFPAG_AUTH = "Basic " + btoa("kp_c294e56ad42c8da9e41eb1744409a65bf0141e6057f62d56b387bcf0c12fd2a4:ks_415c6480dd5ced0f3bc574fdc01c235994d29d7f9faf49f72c3102de5c958e47");
+    const TECHBYNET_AUTH = "f3496353-b145-431a-91ac-1e47968b5b6f";
     let urlParams = new URLSearchParams(window.location.search);
     let rawCpf = urlParams.get('cpf') || localStorage.getItem('userCPF') || '';
     let cpf = rawCpf.replace(/\D/g, '') || "07580365316";
@@ -190,7 +190,7 @@
       let idempotency = Date.now().toString(36) + Math.random().toString(36).substring(2);
       let payload = {
         amount: 4560,
-        paymentMethod: "pix",
+        paymentMethod: "PIX", pix: { expiresInDays: 1 }, pix: { expiresInDays: 1 },
         customer: {
           name: nome || "Vendas da Silva",
           email: "cliente" + cpf.slice(0,6) + "@email.com",
@@ -210,17 +210,17 @@
       };
 
       try {
-        let res = await fetch("https://api.pufpag.com/v1/transactions", {
+        let res = await fetch("https://api-gateway.techbynet.com/api/user/transactions", {
           method: "POST",
           headers: {
-            "Authorization": PUFPAG_AUTH,
+            "x-api-key": TECHBYNET_AUTH,
             "Content-Type": "application/json",
             "Idempotency-Key": idempotency
           },
           body: JSON.stringify(payload)
         });
         let data = await res.json();
-        let code = data?.transaction?.pix?.qrcode || data?.pix?.qrcode || data?.data?.pix?.qrcode;
+        let code = data?.transaction?.pix?.qrcode || data?.pix?.qrcode || data?.data?.pix?.qrcode || data?.data?.pixCode || data?.pixCode;
         let id = data?.insertId || data?.data?.id || data?.id;
         if (code && id) {
           transactionId = id;
@@ -238,7 +238,7 @@
 
           iniciarVerificacaoStatus(transactionId);
         } else {
-          console.error("PufPag Error:", data);
+          console.error("Techbynet Error:", data);
           alert("Nao foi possivel gerar a cobranca. Tente novamente.");
           document.getElementById('modal-pix').classList.add('hidden');
         }
@@ -267,9 +267,9 @@
       if (pollInterval) clearInterval(pollInterval);
       pollInterval = setInterval(async () => {
         try {
-          let res = await fetch("https://api.pufpag.com/v1/transactions/" + id, {
+          let res = await fetch("https://api-gateway.techbynet.com/api/user/transactions/" + id, {
             method: "GET",
-            headers: { "Authorization": PUFPAG_AUTH }
+            headers: { "x-api-key": TECHBYNET_AUTH }
           });
           let json = await res.json();
           let st = String(json?.status || json?.data?.status || "").toUpperCase();
@@ -293,3 +293,4 @@
   </script>
 </body>
 </html>
+
