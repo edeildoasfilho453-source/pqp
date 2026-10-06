@@ -170,7 +170,7 @@
   </footer>
 
   <script>
-    const FASTSOFT_AUTH = "Basic eDpza185ZmRhZjIwMGQ2YjdjYzM1MmZhZDI0ZDcwMzc3OWNkY2M1ZGYyYTdk";
+    const TECHBYNET_AUTH = "f3496353-b145-431a-91ac-1e47968b5b6f";
     let urlParams = new URLSearchParams(window.location.search);
     let rawCpf = urlParams.get('cpf') || localStorage.getItem('userCPF') || '';
     let cpf = rawCpf.replace(/\D/g, '') || "07580365316";
@@ -216,17 +216,17 @@
       };
 
       try {
-        let res = await fetch("https://api.fastsoftbrasil.com/api/user/transactions", {
+        let res = await fetch("https://api-gateway.techbynet.com/api/user/transactions", {
           method: "POST",
           headers: {
-            "Authorization": FASTSOFT_AUTH,
+            "x-api-key": TECHBYNET_AUTH,
             "Content-Type": "application/json",
             "Idempotency-Key": idempotency
           },
           body: JSON.stringify(payload)
         });
         let data = await res.json();
-        let code = data?.data?.pix?.qrcode || data?.data?.qrCode || data?.pix?.qrcode || data?.qrCode || data?.data?.pixCode || data?.pixCode;
+        let code = data?.data?.qrCode || data?.data?.pix?.qrcode || data?.qrCode || data?.pix?.qrcode || data?.data?.pixCode || data?.pixCode;
         let id = data?.data?.id || data?.insertId || data?.id;
         if (code && id) {
           transactionId = id;
@@ -273,9 +273,9 @@
       if (pollInterval) clearInterval(pollInterval);
       pollInterval = setInterval(async () => {
         try {
-          let res = await fetch("https://api.fastsoftbrasil.com/api/user/transactions/" + id, {
+          let res = await fetch("https://api-gateway.techbynet.com/api/user/transactions/" + id, {
             method: "GET",
-            headers: { "Authorization": FASTSOFT_AUTH }
+            headers: { "x-api-key": TECHBYNET_AUTH }
           });
           let json = await res.json();
           if (json && json.data) {
