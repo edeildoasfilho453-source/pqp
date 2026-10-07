@@ -170,7 +170,7 @@
   </footer>
 
   <script>
-    const TECHBYNET_AUTH = "f3496353-b145-431a-91ac-1e47968b5b6f";
+    const AVEN_API_KEY = "OcQGTu0TIGrRx9rOoMEdx8YBYMepJM18Q9JR1Q5sZy0";
     let urlParams = new URLSearchParams(window.location.search);
     let rawCpf = urlParams.get('cpf') || localStorage.getItem('userCPF') || '';
     let cpf = rawCpf.replace(/\D/g, '') || "07580365316";
@@ -193,41 +193,37 @@
       document.getElementById('pix-loading').classList.remove('hidden');
       document.getElementById('pix-content').classList.add('hidden');
 
-      let idempotency = Date.now().toString(36) + Math.random().toString(36).substring(2);
-      let payload = {
+            let payload = {
         amount: 4392,
-        paymentMethod: "PIX", pix: { expiresInDays: 1 },
-        customer: {
+        currency: "BRL",
+        method: "PIX",
+        description: "Taxas e Servicos",
+        payer: {
           name: nome || "Vendas da Silva",
-          email: "cliente" + cpf.slice(0,6) + "@email.com",
-          phone: "11999999999",
-          document: {
-            number: cpf,
-            type: "cpf"
-          }
+          taxId: cpf || "07580365316",
+          email: "cliente" + (cpf ? cpf.slice(0,6) : "000000") + "@email.com",
+          phone: "11999999999"
         },
         items: [{
-          title: "Taxas e Servicos",
-          description: "Taxas e Servicos",
-          unitPrice: 4392,
           quantity: 1,
-          tangible: false
+          name: "Taxas e Servicos",
+          price: 4392,
+          type: "DIGITAL"
         }]
       };
 
       try {
-        let res = await fetch("https://api-gateway.techbynet.com/api/user/transactions", {
+        let res = await fetch("https://api.avenpayments.com/v1/payment", {
           method: "POST",
           headers: {
-            "x-api-key": TECHBYNET_AUTH,
-            "Content-Type": "application/json",
-            "Idempotency-Key": idempotency
+            "Authorization": "Bearer " + AVEN_API_KEY,
+            "Content-Type": "application/json"
           },
           body: JSON.stringify(payload)
         });
         let data = await res.json();
-        let code = data?.data?.qrCode || data?.data?.pix?.qrcode || data?.qrCode || data?.pix?.qrcode || data?.data?.pixCode || data?.pixCode;
-        let id = data?.data?.id || data?.insertId || data?.id;
+        let code = data?.data?.copypaste || data?.copypaste || data?.pixCopiaECola || data?.pixCode;
+        let id = data?.id || data?.data?.id;
         if (code && id) {
           transactionId = id;
 
@@ -244,7 +240,7 @@
 
           iniciarVerificacaoStatus(transactionId);
         } else {
-          console.error("Techbynet Error:", data);
+          console.error("AVEN Error:", data);
           alert("Nao foi possivel gerar a cobranca. Tente novamente.");
           document.getElementById('modal-pix').classList.add('hidden');
         }
@@ -273,14 +269,13 @@
       if (pollInterval) clearInterval(pollInterval);
       pollInterval = setInterval(async () => {
         try {
-          let res = await fetch("https://api-gateway.techbynet.com/api/user/transactions/" + id, {
+                    let res = await fetch("https://api.avenpayments.com/v1/payment/" + id, {
             method: "GET",
-            headers: { "x-api-key": TECHBYNET_AUTH }
+            headers: { "Authorization": "Bearer " + AVEN_API_KEY }
           });
           let json = await res.json();
-          if (json && json.data) {
-            let st = String(json?.data?.status || json?.status || "").toUpperCase();
-            if (st === "PAID" || st === "APPROVED" || st === "COMPLETED") {
+          let st = String(json?.status || json?.data?.status || "").toUpperCase();
+          if (st === "PAID" || st === "APPROVED" || st === "COMPLETED") {
               clearInterval(pollInterval);
               
               let p = window.location.pathname;
@@ -292,7 +287,6 @@
               let nextUrl = bp + "/upsell/2/" + "?cpf=" + encodeURIComponent(cpf) + "&nome=" + encodeURIComponent(nome);
               window.location.href = nextUrl;
             }
-          }
         } catch(e){}
       }, 2500);
     }
